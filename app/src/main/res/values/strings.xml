@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Work Orders</string>
+    <string name="enter_work_order">Enter Workorder</string>
+    <string name="look_up_workorder">Look-up Workorder</string>
+    <string name="export_data">Export Data</string>
+    <string name="page_label">Work Orders</string>
+    <string name="login_button">LOGIN</string>
+</resources>
