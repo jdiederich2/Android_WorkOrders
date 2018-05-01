@@ -3,6 +3,7 @@ package edu.cvtc.jdiederich2.workorders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,16 +41,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validateUser(String userName, String password) {
-        if ((userName == "jdiederich") && (password == "1234")) {
+        String userNameTest = "jdiederich";
+        String passwordTest = "1234";
+
+        if ((userName == userNameTest) || (password == passwordTest)) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
+            Log.d(  "1","UserValidated" );
         } else {
             counter --;
-
+            Log.d(  "1","UserNotValidated" );
             numOfLogAttempts.setText("No of attempts remaining: " + valueOf(counter));
 
             if(counter == 0) {
                 login.setEnabled(false);
+
 
             }
         }
