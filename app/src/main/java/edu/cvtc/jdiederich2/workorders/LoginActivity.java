@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private int counter = 5;
     private Button resetUserName;
     private Button resetPassword;
+    private Button registerUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.button_Login);
         resetUserName = (Button) findViewById(R.id.button_forgotUserName);
         resetPassword = (Button) findViewById(R.id.button_forgotPassword);
+        registerUser = (Button) findViewById( R.id.button_registerUser );
 
         numOfLogAttempts.setText("Number of attempts remaining: 5");
 
@@ -57,6 +59,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        registerUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, UserRegisterActivity.class);
                 startActivity(intent);
             }
         });

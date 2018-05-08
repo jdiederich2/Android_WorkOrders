@@ -21,4 +21,9 @@
     </string>
     <string name="button_registerUser">First time user?</string>
     <string name="button_forgotUserName">Forgot User Name or Password?</string>
+    <string name="label_ResetPasswordLabel">Reset Password</string>
+    <string name="label_ResetUserName">Reset User Name</string>
+    <string name="editText_FirstName">First Name</string>
+    <string name="label_UserName">User Name:</string>
+    <string name="button_RegisterUser">Register</string>
 </resources>

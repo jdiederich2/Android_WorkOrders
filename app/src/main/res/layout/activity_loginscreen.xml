@@ -91,7 +91,8 @@
         android:id="@+id/button_forgotUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="28dp"
         android:background="@android:color/transparent"
         android:text="Forgot User Name?"
         app:layout_constraintBottom_toBottomOf="@+id/button_forgotPassword"
@@ -101,14 +102,14 @@
         android:id="@+id/button_forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="92dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@android:color/transparent"
         android:text="Forgot Password?"
         app:layout_constraintBottom_toTopOf="@+id/button_registerUser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintHorizontal_bias="0.711"
         app:layout_constraintStart_toEndOf="@+id/button_forgotUserName" />
 
     <Button

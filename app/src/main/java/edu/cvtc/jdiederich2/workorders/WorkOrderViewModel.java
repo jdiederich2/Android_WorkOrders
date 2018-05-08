@@ -9,7 +9,6 @@ import java.util.List;
 
 public class WorkOrderViewModel extends AndroidViewModel {
 
-
     private WorkOrderRepository mWorkOrderRepository;
     private LiveData<List<WorkOrder>> mAllWorkOrders;
 
