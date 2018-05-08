@@ -1,14 +1,43 @@
 package edu.cvtc.jdiederich2.workorders;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.PrimaryKey;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.view.View;
+
+@Entity //(indices = {@Index("User"), @Index(value = {"userName", "lastName", "email"}, unique = true)})
 public class User {
 
+    @PrimaryKey(autoGenerate = true)
+    private int userID;
+
+    @NonNull
+    @ColumnInfo(name = "firstName")
     private String firstName;
+
+    @NonNull
+    @ColumnInfo(name = "lastName")
     private String lastName;
+
+    @NonNull
+    @ColumnInfo(name = "email")
     private String email;
+
+    @NonNull
+    @ColumnInfo(name = "userName")
+
     private String userName;
+
+    @NonNull
+    @ColumnInfo(name = "password")
     private String password;
 
-    public User(String firstName, String lastName, String email, String userName, String password) {
+
+    public User(int userID, String firstName, String lastName, String email, String userName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -16,8 +45,14 @@ public class User {
         this.password = password;
     }
 
+
+
+    public int getUserID() {
+        return userID;
+    }
+
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -25,7 +60,7 @@ public class User {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -33,7 +68,7 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -41,7 +76,7 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return this.userName;
     }
 
     public void setUserName(String userName) {
@@ -49,7 +84,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -58,6 +93,6 @@ public class User {
 
     public String creteUserName(String firstName, String lastName) {
         String userName = (firstName.subSequence(0, 3) + lastName).toLowerCase();
-        return userName;
+        return this.userName;
     }
 }

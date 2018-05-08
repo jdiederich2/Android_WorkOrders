@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         resetUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ResetUserNameActivity.this);
+                Intent intent = new Intent(LoginActivity.this, ResetUserNameActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,11 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.this);
+                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
                 startActivity(intent);
             }
         });
     }
+
 
     private void validateUser(String userName, String password) {
         String userNameTest = "jdiederich";
@@ -73,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             counter --;
             loginError.setVisibility(View.VISIBLE);
-            loginError.setTextColor(Color.CYAN);
+            loginError.getResources().getColor(R.color.colorAccent);
             loginError.setText("Incorrect user name or password");
 
             this.userName.setText("");
