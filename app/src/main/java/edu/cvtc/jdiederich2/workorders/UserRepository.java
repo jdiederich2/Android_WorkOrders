@@ -14,14 +14,35 @@ public class UserRepository  {
 
     // Repository constructor
     UserRepository(Application application) {
-        WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaes( application );
+        WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaseInstance( application );
 
-        mUserDao = db.userDao();
+        mUserDao = db.getUserDao();
         mUser = mUserDao.getUser();
     }
 
-    // LiveData Observer to refresh workOrders list when changed
+    // LiveData Observer to refresh user list when changed
     MutableLiveData<List<User>> getUser() {
         return mUser;
+    }
+
+    // LiveData Observer for user insert
+    public void insertUser(User user) {
+        new insertUserAsyncTask(mUserDao).execute(user);
+    }
+
+    // Separate non-UI thread for queries to run on.
+    private static class insertUserAsyncTask extends AsyncTask<User, Void, Void> {
+
+        private UserDao mUserAsyncTaskDao;
+
+        insertUserAsyncTask(UserDao dao) {
+            mUserAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final User... params) {
+            mUserAsyncTaskDao.insertUser(params[0]);
+            return null;
+        }
     }
 }

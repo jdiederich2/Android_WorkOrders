@@ -3,6 +3,7 @@ package edu.cvtc.jdiederich2.workorders;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -19,9 +20,11 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 public class WorkOrder {
 
+    @Ignore
     @PrimaryKey(autoGenerate = true)
     private int orderID;
 
+    @Ignore
     @ColumnInfo(name = "userID")
     private int userID;
 
@@ -51,7 +54,6 @@ public class WorkOrder {
 
     public WorkOrder() {
     }
-
 
     public int getOrderID() {
         return this.orderID;

@@ -23,11 +23,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
         mUser = mUserRepository.getUser();
     }
 
-
     public MutableLiveData<List<User>> getUser() {
         return mUser;
     }
-
-    public void insert(User user) {}
-
 }

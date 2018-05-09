@@ -1,6 +1,6 @@
 package edu.cvtc.jdiederich2.workorders;
 
-import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -14,5 +14,5 @@ public interface WorkOrdersDao {
     void insert(WorkOrder workOrder);
 
     @Query("SELECT * FROM WorkOrder")
-    LiveData<List<WorkOrder>> getAllWorkOrders();
+    MutableLiveData<List<WorkOrder>> getAllWorkOrders();
 }

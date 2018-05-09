@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserDao {
 
     @Insert
-    void insert(User user);
+    void insertUser(User user);
 
     @Query("SELECT * FROM User")
     MutableLiveData<List<User>> getUser();

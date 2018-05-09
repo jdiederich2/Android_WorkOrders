@@ -2,6 +2,7 @@ package edu.cvtc.jdiederich2.workorders;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.PrimaryKey;
@@ -12,6 +13,7 @@ import android.view.View;
 @Entity //(indices = {@Index("User"), @Index(value = {"userName", "lastName", "email"}, unique = true)})
 public class User {
 
+    @Ignore
     @PrimaryKey(autoGenerate = true)
     private int userID;
 
