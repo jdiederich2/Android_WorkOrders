@@ -2,7 +2,6 @@ package edu.cvtc.jdiederich2.workorders;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 public class WorkOrderRepository {
 
     private WorkOrdersDao mWorkOrdersDao;
-    private LiveData<List<WorkOrder>> mAllWorkOrders;
+    private List<WorkOrder> mAllWorkOrders;
 
     // Respository constructor
     WorkOrderRepository(Application application) {
@@ -22,7 +21,7 @@ public class WorkOrderRepository {
 
     // LiveData Observer to refresh workOrders list when changed
     LiveData<List<WorkOrder>> getAllWorkOrders() {
-        return mAllWorkOrders;
+        return (LiveData<List<WorkOrder>>) mAllWorkOrders;
     }
 
     // LiveData Observer for workOrder insert

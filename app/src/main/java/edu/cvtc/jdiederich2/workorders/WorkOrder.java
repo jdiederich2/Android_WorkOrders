@@ -3,12 +3,11 @@ package edu.cvtc.jdiederich2.workorders;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 
-import java.util.Date;
+import java.util.List;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -18,7 +17,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         childColumns = "userID",
         onDelete = CASCADE))
 
-public class WorkOrder {
+public class WorkOrder implements WorkOrdersDao {
 
     @PrimaryKey(autoGenerate = true)
     private int orderID;
@@ -33,6 +32,10 @@ public class WorkOrder {
     @NonNull
     @ColumnInfo(name = "csLastName")
     private String csLastName;
+
+    @NonNull
+    @ColumnInfo(name = "csPhoneNum")
+    private String csPhoneNumber;
 
     @NonNull
     @ColumnInfo(name = "csAddress")
@@ -51,6 +54,18 @@ public class WorkOrder {
     private String csInstallDate;
 
     public WorkOrder() {
+    }
+
+    public WorkOrder(int orderID, int userID, @NonNull String csFirstName, @NonNull String csLastName, @NonNull String csPhoneNumber, @NonNull String csAddress, @NonNull String csCity, @NonNull int csAccountNum, @NonNull String csInstallDate) {
+        this.orderID = orderID;
+        this.userID = userID;
+        this.csFirstName = csFirstName;
+        this.csLastName = csLastName;
+        this.csPhoneNumber = csPhoneNumber;
+        this.csAddress = csAddress;
+        this.csCity = csCity;
+        this.csAccountNum = csAccountNum;
+        this.csInstallDate = csInstallDate;
     }
 
     public int getOrderID() {
@@ -85,6 +100,15 @@ public class WorkOrder {
         this.csLastName = csLastName;
     }
 
+    @NonNull
+    public String getCsPhoneNumber() {
+        return csPhoneNumber;
+    }
+
+    public void setCsPhoneNumber(@NonNull String csPhoneNumber) {
+        this.csPhoneNumber = csPhoneNumber;
+    }
+
     public String getCsAddress() {
         return this.csAddress;
     }
@@ -115,5 +139,15 @@ public class WorkOrder {
 
     public void setCsInstallDate(@NonNull String csInstallDate) {
         this.csInstallDate = csInstallDate;
+    }
+
+    @Override
+    public void insertWorkOrder(WorkOrder workOrder) {
+
+    }
+
+    @Override
+    public List<WorkOrder> getAllWorkOrders() {
+        return null;
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <!-- Strings related to main screen -->
     <string name="app_name">Work Orders</string>
-    <string name="enter_work_order">Enter Workorder</string>
+    <string name="button_enter_work_order">Enter Workorder</string>
     <string name="look_up_workorder">Look-up Workorder</string>
     <string name="export_data">Export Data</string>
     <string name="page_label">Work Orders</string>

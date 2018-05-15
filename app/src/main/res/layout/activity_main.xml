@@ -1,48 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <Button
-        android:id="@+id/button_EnterWorkOrder"
-        android:layout_width="@dimen/activity_horizontal_margin"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:text="Enter Workorder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_height="50sp"
-        tools:layout_width="200sp" />
-
-    <Button
-        android:id="@+id/button_ViewWorkOrders"
-        android:layout_height="wrap_content"
-        android:layout_width="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="25dp"
-        android:text="@string/button_ViewWorkOrders"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_EnterWorkOrder"
-        tools:layout_height="50sp"
-        tools:layout_width="200sp" />
-
     <TextView
         android:id="@+id/page_name"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
         android:text="@string/page_label"
         android:textColor="?attr/colorPrimaryDark"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/button_EnterWorkOrder"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_enter_work_order" />
+
+    <Button
+        android:id="@+id/button_ViewWorkOrders"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:text="@string/button_ViewWorkOrders"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
