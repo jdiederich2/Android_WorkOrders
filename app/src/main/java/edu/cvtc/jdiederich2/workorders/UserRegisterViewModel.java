@@ -2,25 +2,26 @@ package edu.cvtc.jdiederich2.workorders;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 
 import java.util.List;
 
-public class UserViewModel extends AndroidViewModel {
+public class UserRegisterViewModel extends AndroidViewModel {
 
     private UserRepository mUserRepository;
-    private MutableLiveData<List<User>> mUser;
+    private LiveData<List<User>> mUser;
 
     // Constructor. References teh repository and gets the user from the repository.
-    public UserViewModel(@NonNull Application application) {
+    public UserRegisterViewModel(@NonNull Application application) {
         super(application);
         mUserRepository = new UserRepository( application );
         mUser = mUserRepository.getUser();
     }
 
-    MutableLiveData<List<User>> getUser() {
+    LiveData<List<User>> getUser() {
         return mUser;
     }
 

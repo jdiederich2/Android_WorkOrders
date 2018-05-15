@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".WorkOrderInsertFragment">
+
+    <TextView
+        android:id="@+id/textView_PageHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/PageHeader"
+        android:text="@string/label_AddWorkOrder" />
+
+    <EditText
+        android:id="@+id/editText_FirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="First Name"/>
+
+    <EditText
+        android:id="@+id/editText_LastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="Last Name"/>
+
+    <EditText
+        android:id="@+id/editText_Phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="Phone Number"/>
+
+    <EditText
+        android:id="@+id/editText_Address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="Address"/>
+
+    <EditText
+        android:id="@+id/editText_City"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="City"/>
+
+    <EditText
+        android:id="@+id/editText_AcctNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="Account Number"/>
+
+    <EditText
+        android:id="@+id/editText_InstallDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:hint="Install Date"/>
+
+    <Button
+        android:id="@+id/button_AddWorkOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="@string/button_AddWorkOrder" />
+
+</LinearLayout>

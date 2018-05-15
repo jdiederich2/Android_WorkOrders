@@ -13,7 +13,6 @@ import android.view.View;
 @Entity //(indices = {@Index("User"), @Index(value = {"userName", "lastName", "email"}, unique = true)})
 public class User {
 
-    @Ignore
     @PrimaryKey(autoGenerate = true)
     private int userID;
 
@@ -39,7 +38,7 @@ public class User {
     private String password;
 
 
-    public User(int userID, String firstName, String lastName, String email, String userName, String password) {
+    public User(String firstName, String lastName, String email, String userName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -51,6 +50,10 @@ public class User {
 
     public int getUserID() {
         return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getFirstName() {
@@ -98,3 +101,5 @@ public class User {
         return this.userName;
     }
 }
+
+

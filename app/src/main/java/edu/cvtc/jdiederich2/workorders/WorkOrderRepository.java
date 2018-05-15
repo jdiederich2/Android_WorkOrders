@@ -1,6 +1,7 @@
 package edu.cvtc.jdiederich2.workorders;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.AsyncTask;
 
@@ -9,38 +10,38 @@ import java.util.List;
 public class WorkOrderRepository {
 
     private WorkOrdersDao mWorkOrdersDao;
-    private MutableLiveData<List<WorkOrder>> mAllWorkOrders;
+    private LiveData<List<WorkOrder>> mAllWorkOrders;
 
     // Respository constructor
     WorkOrderRepository(Application application) {
         WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaseInstance(application);
 
-        mWorkOrdersDao = db.getWorkOrdersDao();
+        mWorkOrdersDao = db.WorkOrdersDao();
         mAllWorkOrders = mWorkOrdersDao.getAllWorkOrders();
     }
 
     // LiveData Observer to refresh workOrders list when changed
-    MutableLiveData<List<WorkOrder>> getAllWorkOrders() {
+    LiveData<List<WorkOrder>> getAllWorkOrders() {
         return mAllWorkOrders;
     }
 
     // LiveData Observer for workOrder insert
-    public void insert(WorkOrder workOrder) {
-        new insertAsyncTask(mWorkOrdersDao).execute(workOrder);
+    public void insertWorkOrder(WorkOrder workOrder) {
+        new insertWorkOrderAsyncTask(mWorkOrdersDao).execute(workOrder);
     }
 
     // Separate non-UI thread for queries to run on.
-    private static class insertAsyncTask extends AsyncTask<WorkOrder, Void, Void> {
+    private static class insertWorkOrderAsyncTask extends AsyncTask<WorkOrder, Void, Void> {
 
         private WorkOrdersDao mAsyncTaskDao;
 
-        insertAsyncTask(WorkOrdersDao dao) {
+        insertWorkOrderAsyncTask(WorkOrdersDao dao) {
             mAsyncTaskDao = dao;
         }
 
         @Override
         protected Void doInBackground(final WorkOrder... params) {
-            mAsyncTaskDao.insert(params[0]);
+            mAsyncTaskDao.insertWorkOrder(params[0]);
             return null;
         }
     }

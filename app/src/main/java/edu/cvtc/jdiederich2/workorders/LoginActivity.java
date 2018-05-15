@@ -1,5 +1,6 @@
 package edu.cvtc.jdiederich2.workorders;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -74,8 +75,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void validateUser(String userName, String password) {
+
+        final LoginActivityViewModel loginViewModel = ViewModelProviders.of(this).get(LoginActivityViewModel.class);
+
+        loginViewModel.getUserNameAndPassword( userName );
+
         String userNameTest = "jdiederich";
         String passwordTest = "1234";
+
 
         if (userName.equals(userNameTest) || password.equals(passwordTest)) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

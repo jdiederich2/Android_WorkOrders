@@ -2,6 +2,7 @@ package edu.cvtc.jdiederich2.workorders;
 
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.AsyncTask;
 
@@ -10,18 +11,18 @@ import java.util.List;
 public class UserRepository  {
 
     private UserDao mUserDao;
-    private MutableLiveData<List<User>> mUser;
+    private LiveData<List<User>> mUser;
 
     // Repository constructor
     UserRepository(Application application) {
         WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaseInstance( application );
 
-        mUserDao = db.getUserDao();
+        mUserDao = db.UserDao();
         mUser = mUserDao.getUser();
     }
 
     // LiveData Observer to refresh user list when changed
-    MutableLiveData<List<User>> getUser() {
+    LiveData<List<User>> getUser() {
         return mUser;
     }
 

@@ -11,16 +11,22 @@ import android.support.annotation.NonNull;
 
 @Database(entities = {User.class, WorkOrder.class}, version = 1)
 
+
 public abstract class WorkOrdersDatabase extends RoomDatabase {
+
+    public abstract UserDao UserDao();
+    public abstract WorkOrdersDao WorkOrdersDao();
+    public abstract LoginDao LoginDao();
 
     private static final String DB_NAME = "WorkOrdersDatabase.db";
     private static WorkOrdersDatabase INSTANCE;
 
+    // Gets an instance of the database to ensure only one
     static synchronized WorkOrdersDatabase getDatabaseInstance(Context context) {
         if(INSTANCE == null) {
             synchronized (WorkOrdersDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = create( context );
+                    INSTANCE = createDb( context );
                 }
             }
         }
@@ -28,7 +34,8 @@ public abstract class WorkOrdersDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    private static WorkOrdersDatabase create(final Context context) {
+    // Separate db create method used in getDatabaseInstance above
+    private static WorkOrdersDatabase createDb(final Context context) {
         return Room.databaseBuilder(context.getApplicationContext(),
                 WorkOrdersDatabase.class, DB_NAME)
                 // TODO: May not need this. Check it out.
@@ -36,9 +43,7 @@ public abstract class WorkOrdersDatabase extends RoomDatabase {
                 .build();
     }
 
-    public abstract UserDao getUserDao();
 
-    public abstract WorkOrdersDao getWorkOrdersDao();
 
 
 
@@ -59,8 +64,8 @@ public abstract class WorkOrdersDatabase extends RoomDatabase {
         private final WorkOrdersDao mWorkOrdersDao;
 
         PopulateDbAsync(WorkOrdersDatabase db) {
-            mUserDao = db.getUserDao();
-            mWorkOrdersDao = db.getWorkOrdersDao();
+            mUserDao = db.UserDao();
+            mWorkOrdersDao = db.WorkOrdersDao();
         }
 
         @Override

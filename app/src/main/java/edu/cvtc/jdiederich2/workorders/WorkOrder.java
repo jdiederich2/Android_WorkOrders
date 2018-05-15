@@ -20,11 +20,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 public class WorkOrder {
 
-    @Ignore
     @PrimaryKey(autoGenerate = true)
     private int orderID;
 
-    @Ignore
     @ColumnInfo(name = "userID")
     private int userID;
 
@@ -118,5 +116,4 @@ public class WorkOrder {
     public void setCsInstallDate(@NonNull String csInstallDate) {
         this.csInstallDate = csInstallDate;
     }
-
 }
