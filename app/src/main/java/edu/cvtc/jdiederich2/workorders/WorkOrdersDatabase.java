@@ -9,7 +9,7 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 
-@Database(entities = {User.class, WorkOrder.class}, version = 1)
+@Database(entities = {User.class, WorkOrderModel.class}, version = 1)
 
 
 public abstract class WorkOrdersDatabase extends RoomDatabase {

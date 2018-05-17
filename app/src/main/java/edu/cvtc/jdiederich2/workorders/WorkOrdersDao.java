@@ -10,10 +10,13 @@ import java.util.List;
 public interface WorkOrdersDao {
 
     @Insert
-    void insertWorkOrder(WorkOrder workOrder);
+    void insertWorkOrder(WorkOrderModel workOrder);
 
-    @Query("SELECT * FROM WorkOrder")
-    List<WorkOrder> getAllWorkOrders();
+    @Query("SELECT * FROM WorkOrderModel")
+    List<WorkOrderModel> getSingleWorkOrder();
+
+    @Query("SELECT * FROM WorkOrderModel")
+    List<WorkOrderModel> getAllWorkOrders();
 
     // TODO: @Insert(onConflict = OnConflictStrategy.REPLACE)
 }

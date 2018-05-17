@@ -90,6 +90,6 @@ public class WorkOrderListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(WorkOrder item);
+        void onListFragmentInteraction(WorkOrderModel item);
     }
 }

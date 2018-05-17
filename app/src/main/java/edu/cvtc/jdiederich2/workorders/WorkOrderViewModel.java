@@ -12,18 +12,25 @@ public class WorkOrderViewModel extends AndroidViewModel {
 
     private WorkOrderRepository mWorkOrderRepository;
 
-    private LiveData<List<WorkOrder>> mAllWorkOrders;
+    private LiveData<List<WorkOrderModel>> mSingleWorkOrder;
+    private LiveData<List<WorkOrderModel>> mAllWorkOrders;
+
+    private WorkOrdersDatabase db;
 
     // Constructor. References the repository and gets the work orders from the repository.
     public WorkOrderViewModel(@NonNull Application application) {
         super(application);
+
+        db = WorkOrdersDatabase.getDatabaseInstance(this.getApplication());
         mWorkOrderRepository = new WorkOrderRepository(application);
         mAllWorkOrders = mWorkOrderRepository.getAllWorkOrders();
+        mSingleWorkOrder = mWorkOrderRepository.getSingleWorkOrder();
     }
 
-    LiveData<List<WorkOrder>> getAllWorkOrders() {return mAllWorkOrders; }
 
-    public void insertWorkOrder(WorkOrder workOrder){
+    LiveData<List<WorkOrderModel>> getAllWorkOrders() {return mAllWorkOrders; }
+
+    public void insertWorkOrder(WorkOrderModel workOrder){
         mWorkOrderRepository.insertWorkOrder(workOrder);
     }
 }

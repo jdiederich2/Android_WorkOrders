@@ -17,7 +17,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         childColumns = "userID",
         onDelete = CASCADE))
 
-public class WorkOrder implements WorkOrdersDao {
+public class WorkOrderModel {
 
     @PrimaryKey(autoGenerate = true)
     private int orderID;
@@ -53,19 +53,7 @@ public class WorkOrder implements WorkOrdersDao {
     @ColumnInfo(name = "csInstallDate")
     private String csInstallDate;
 
-    public WorkOrder() {
-    }
-
-    public WorkOrder(int orderID, int userID, @NonNull String csFirstName, @NonNull String csLastName, @NonNull String csPhoneNumber, @NonNull String csAddress, @NonNull String csCity, @NonNull int csAccountNum, @NonNull String csInstallDate) {
-        this.orderID = orderID;
-        this.userID = userID;
-        this.csFirstName = csFirstName;
-        this.csLastName = csLastName;
-        this.csPhoneNumber = csPhoneNumber;
-        this.csAddress = csAddress;
-        this.csCity = csCity;
-        this.csAccountNum = csAccountNum;
-        this.csInstallDate = csInstallDate;
+    public WorkOrderModel() {
     }
 
     public int getOrderID() {
@@ -141,13 +129,4 @@ public class WorkOrder implements WorkOrdersDao {
         this.csInstallDate = csInstallDate;
     }
 
-    @Override
-    public void insertWorkOrder(WorkOrder workOrder) {
-
-    }
-
-    @Override
-    public List<WorkOrder> getAllWorkOrders() {
-        return null;
-    }
 }

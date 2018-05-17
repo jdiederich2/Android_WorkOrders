@@ -12,16 +12,16 @@ import edu.cvtc.jdiederich2.workorders.WorkOrderListFragment.OnListFragmentInter
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link WorkOrder} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link WorkOrderModel} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyWorkOrderListRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkOrderListRecyclerViewAdapter.ViewHolder> {
 
-    private final List<WorkOrder> mValues;
+    private final List<WorkOrderModel> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyWorkOrderListRecyclerViewAdapter(List<WorkOrder> items, OnListFragmentInteractionListener listener) {
+    public MyWorkOrderListRecyclerViewAdapter(List<WorkOrderModel> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -62,7 +62,7 @@ public class MyWorkOrderListRecyclerViewAdapter extends RecyclerView.Adapter<MyW
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public WorkOrder mItem;
+        public WorkOrderModel mItem;
 
         public ViewHolder(View view) {
             super( view );
