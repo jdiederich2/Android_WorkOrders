@@ -68,14 +68,14 @@ public class WorkOrderInsertActivity extends Activity {
 
                 db = WorkOrdersDatabase.getDatabaseInstance(getApplication());
                 InsertWorkOrderAsyncTask insertWorkOrderAsyncTask = new InsertWorkOrderAsyncTask(
-                    workOrder.setCsFirstName(mFirstName.getText().toString());
-                    workOrder.setCsLastName(mLastName.getText().toString());
-                    workOrder.setCsPhoneNumber(mPhone.getText().toString());
-                    workOrder.setCsAddress(mAddress.getText().toString());
-                    workOrder.setCsCity(mCity.getText().toString());
-                    workOrder.setCsAccountNum(Integer.parseInt(mAccountNumber.getText().toString()));
-                    workOrder.setCsInstallDate(mInstallDate.getText().toString());
-
+//                    workOrder.setCsFirstName(mFirstName.getText().toString()),
+//                    workOrder.setCsLastName(mLastName.getText().toString()),
+//                    workOrder.setCsPhoneNumber(mPhone.getText().toString()),
+//                    workOrder.setCsAddress(mAddress.getText().toString()),
+//                    workOrder.setCsCity(mCity.getText().toString()),
+//                    workOrder.setCsAccountNum(Integer.parseInt(mAccountNumber.getText().toString())),
+//                    workOrder.setCsInstallDate(mInstallDate.getText().toString())
+                        workOrderObject
                 );
 
                 insertWorkOrderAsyncTask.execute();
@@ -122,13 +122,13 @@ public class WorkOrderInsertActivity extends Activity {
         protected Void doInBackground(final WorkOrder... params) {
 
             workOrderObject = workOrder;
-            WorkOrderInsertActivity.workOrderObject.setCsFirstName(workOrderInsert.mFirstName.getText().toString());
-            WorkOrderInsertActivity.workOrderObject.setCsLastName(workOrderInsert.mLastName.getText().toString());
-            WorkOrderInsertActivity.workOrderObject.setCsPhoneNumber(workOrderInsert.mPhone.getText().toString());
-            WorkOrderInsertActivity.workOrderObject.setCsAddress(workOrderInsert.mAddress.getText().toString());
-            WorkOrderInsertActivity.workOrderObject.setCsCity(workOrderInsert.mCity.getText().toString());
-            WorkOrderInsertActivity.workOrderObject.setCsAccountNum(Integer.parseInt(workOrderInsert.mAccountNumber.getText().toString()));
-            WorkOrderInsertActivity.workOrderObject.setCsInstallDate(workOrderInsert.mInstallDate.getText().toString());
+            workOrderObject.setCsFirstName(workOrderInsert.mFirstName.getText().toString());
+            workOrderObject.setCsLastName(workOrderInsert.mLastName.getText().toString());
+            workOrderObject.setCsPhoneNumber(workOrderInsert.mPhone.getText().toString());
+            workOrderObject.setCsAddress(workOrderInsert.mAddress.getText().toString());
+            workOrderObject.setCsCity(workOrderInsert.mCity.getText().toString());
+            workOrderObject.setCsAccountNum(Integer.parseInt(workOrderInsert.mAccountNumber.getText().toString()));
+            workOrderObject.setCsInstallDate(workOrderInsert.mInstallDate.getText().toString());
 
             return null;
         }
