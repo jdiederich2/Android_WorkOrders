@@ -3,7 +3,7 @@ package edu.cvtc.jdiederich2.workorders;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -12,8 +12,7 @@ public class WorkOrderViewModel extends AndroidViewModel {
 
     private WorkOrderRepository mWorkOrderRepository;
 
-    private LiveData<List<WorkOrderModel>> mSingleWorkOrder;
-    private LiveData<List<WorkOrderModel>> mAllWorkOrders;
+    private LiveData<List<WorkOrderModel>> workOrderList;
 
     private WorkOrdersDatabase db;
 
@@ -23,14 +22,30 @@ public class WorkOrderViewModel extends AndroidViewModel {
 
         db = WorkOrdersDatabase.getDatabaseInstance(this.getApplication());
         mWorkOrderRepository = new WorkOrderRepository(application);
-        mAllWorkOrders = mWorkOrderRepository.getAllWorkOrders();
-        mSingleWorkOrder = mWorkOrderRepository.getSingleWorkOrder();
+        workOrderList = mWorkOrderRepository.getAllWorkOrders();
+//        mSingleWorkOrder = mWorkOrderRepository.getSingleWorkOrder();
     }
 
 
-    LiveData<List<WorkOrderModel>> getAllWorkOrders() {return mAllWorkOrders; }
+    public LiveData<List<WorkOrderModel>> getAllWorkOrders() {return workOrderList; }
 
     public void insertWorkOrder(WorkOrderModel workOrder){
         mWorkOrderRepository.insertWorkOrder(workOrder);
+    }
+
+    private static class workOrderAsyncTask extends AsyncTask<WorkOrderModel, Void, Void> {
+
+        private WorkOrdersDatabase db;
+
+        workOrderAsyncTask(WorkOrdersDatabase db) {
+            this.db = db;
+        }
+
+
+        @Override
+        protected Void doInBackground(WorkOrderModel... workOrderModels) {
+            db.workOrdersModel().getAllWorkOrders();
+            return null;
+        }
     }
 }

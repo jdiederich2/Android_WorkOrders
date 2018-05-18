@@ -9,15 +9,15 @@ import java.util.List;
 public class WorkOrderRepository {
 
     private WorkOrdersDao mWorkOrdersDao;
-    private List<WorkOrderModel> mAllWorkOrders;
-    private List<WorkOrderModel> mSingleWorkOrder;
+    private LiveData<List<WorkOrderModel>> mAllWorkOrders;
+    private LiveData<List<WorkOrderModel>> mSingleWorkOrder;
 
     // Respository constructor
     WorkOrderRepository(Application application) {
         WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaseInstance(application);
 
-        mWorkOrdersDao = db.WorkOrdersDao();
-        mAllWorkOrders = mWorkOrdersDao.getAllWorkOrders();
+        mWorkOrdersDao = db.workOrdersModel();
+        mAllWorkOrders =  mWorkOrdersDao.getAllWorkOrders();
         mSingleWorkOrder = mWorkOrdersDao.getSingleWorkOrder();
     }
 

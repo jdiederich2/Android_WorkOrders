@@ -32,7 +32,7 @@ public class WorkOrderInsertActivity extends Activity {
 
     private Button mAddWorkOrder;
 
-    private static WorkOrder workOrderObject;
+    private static WorkOrderModel workOrderObject;
 
     WorkOrdersDatabase db;
 
@@ -130,7 +130,7 @@ public class WorkOrderInsertActivity extends Activity {
 
 
     private void showWorkOrder() {
-        LiveData<List<WorkOrder>> workOrders = (LiveData<List<WorkOrder>>) db.WorkOrdersDao().getAllWorkOrders();
+        LiveData<List<WorkOrderModel>> workOrders = (LiveData<List<WorkOrderModel>>) db.workOrdersModel().getAllWorkOrders();
         Log.d("list", workOrders.toString());
     }
 

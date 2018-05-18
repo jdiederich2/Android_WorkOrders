@@ -5,15 +5,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/page_name"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/page_label"
-        android:textColor="?attr/colorPrimaryDark"
-        android:textSize="30sp"
-        android:gravity="center"/>
-
-    <TextView
         android:id="@+id/textView_LastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

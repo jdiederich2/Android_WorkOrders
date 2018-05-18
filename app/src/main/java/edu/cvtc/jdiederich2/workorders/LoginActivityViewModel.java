@@ -11,9 +11,9 @@ import java.util.List;
 import static java.lang.String.valueOf;
 
 public class LoginActivityViewModel extends AndroidViewModel implements LoginDao {
-
     private UserRepository mUserRepository;
     private LiveData<List<User>> mUser;
+
 
     private String dbUserName;
     private String dbPassword;

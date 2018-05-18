@@ -14,10 +14,6 @@ import android.support.annotation.NonNull;
 
 public abstract class WorkOrdersDatabase extends RoomDatabase {
 
-    public abstract UserDao UserDao();
-    public abstract WorkOrdersDao WorkOrdersDao();
-    public abstract LoginDao LoginDao();
-
     private static final String DB_NAME = "WorkOrdersDatabase.db";
     private static WorkOrdersDatabase INSTANCE;
 
@@ -34,6 +30,11 @@ public abstract class WorkOrdersDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+
+    public abstract UserDao userModel();
+    public abstract WorkOrdersDao workOrdersModel();
+    public abstract LoginDao loginModel();
+
     // Separate db create method used in getDatabaseInstance above
     private static WorkOrdersDatabase createDb(final Context context) {
         return Room.databaseBuilder(context.getApplicationContext(),
@@ -42,9 +43,6 @@ public abstract class WorkOrdersDatabase extends RoomDatabase {
                 // .addCallback( sWorkOrdersDatabaseCallback )
                 .build();
     }
-
-
-
 
 
     // TODO: may not need callback. Database will only be populated at creation
@@ -60,12 +58,14 @@ public abstract class WorkOrdersDatabase extends RoomDatabase {
     // TODO: may not need. Database will only be populated at creation
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
-        private final UserDao mUserDao;
-        private final WorkOrdersDao mWorkOrdersDao;
+        private final UserDao mUserModel;
+        private final WorkOrdersDao mWorkOrdersModel;
+        private final LoginDao mLoginModel;
 
         PopulateDbAsync(WorkOrdersDatabase db) {
-            mUserDao = db.UserDao();
-            mWorkOrdersDao = db.WorkOrdersDao();
+            mUserModel = db.userModel();
+            mWorkOrdersModel = db.workOrdersModel();
+            mLoginModel = db.loginModel();
         }
 
         @Override

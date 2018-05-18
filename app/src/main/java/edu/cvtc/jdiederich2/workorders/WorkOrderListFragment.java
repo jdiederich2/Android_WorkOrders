@@ -25,7 +25,7 @@ public class WorkOrderListFragment extends Fragment {
     private Button viewWorkOrders;
     private int mColumnCount = 4;
 
-    private List<WorkOrder> mValue;
+    private List<WorkOrderModel> mValue;
     private OnListFragmentInteractionListener mListener;
 
     /**

@@ -17,7 +17,7 @@ public class UserRepository  {
     UserRepository(Application application) {
         WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaseInstance( application );
 
-        mUserDao = db.UserDao();
+        mUserDao = db.userModel();
         mUser = mUserDao.getUser();
     }
 
