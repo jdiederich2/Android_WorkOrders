@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".WorkOrderInsertFragment">
+    tools:context=".Views.WorkOrderInsertFragment">
 
     <TextView
         android:id="@+id/textView_PageHeader"

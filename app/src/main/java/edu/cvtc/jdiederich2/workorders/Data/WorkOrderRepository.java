@@ -1,4 +1,4 @@
-package edu.cvtc.jdiederich2.workorders;
+package edu.cvtc.jdiederich2.workorders.Data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
@@ -6,36 +6,47 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
+import edu.cvtc.jdiederich2.workorders.Controllers.WorkOrdersDao;
+import edu.cvtc.jdiederich2.workorders.Models.WorkOrderModel;
+import edu.cvtc.jdiederich2.workorders.Models.User;
+import edu.cvtc.jdiederich2.workorders.Controllers.UserDao;
+
 public class WorkOrderRepository {
 
-    private WorkOrdersDao mWorkOrdersDao;
+    private UserDao mUserDao;
+    private LiveData<List<User>> mUser;
+
+    private WorkOrdersDao mWorkOrderDao;
     private LiveData<List<WorkOrderModel>> mAllWorkOrders;
     private LiveData<List<WorkOrderModel>> mSingleWorkOrder;
 
     // Respository constructor
-    WorkOrderRepository(Application application) {
+    public WorkOrderRepository(Application application) {
         WorkOrdersDatabase db = WorkOrdersDatabase.getDatabaseInstance(application);
 
-        mWorkOrdersDao = db.workOrdersModel();
-        mAllWorkOrders =  mWorkOrdersDao.getAllWorkOrders();
-        mSingleWorkOrder = mWorkOrdersDao.getSingleWorkOrder();
+        mWorkOrderDao = db.workOrderModelDao();
+        mAllWorkOrders =  mWorkOrderDao.getAllWorkOrders();
+        mSingleWorkOrder = mWorkOrderDao.getSingleWorkOrder();
     }
 
     // LiveData Observer to refresh workOrders list when changed
-    LiveData<List<WorkOrderModel>> getAllWorkOrders() {
-        return (LiveData<List<WorkOrderModel>>) mAllWorkOrders;
+    public LiveData<List<WorkOrderModel>> getAllWorkOrders() {
+        return mAllWorkOrders;
     }
 
     // LiveData Observer for workOrder insert
     public void insertWorkOrder(WorkOrderModel workOrder) {
-        new insertWorkOrderAsyncTask(mWorkOrdersDao).execute(workOrder);
+        new insertWorkOrderAsyncTask(mWorkOrderDao).execute(workOrder);
     }
 
-    public LiveData<List<WorkOrderModel>> getSingleWorkOrder() {
-        return (LiveData<List<WorkOrderModel>>) mSingleWorkOrder;
+    public LiveData<List<User>> getUser() {
+        return mUser;
     }
 
-    // Separate non-UI thread for queries to run on.
+    public void insertUser(User user) {
+
+    }
+
     private static class insertWorkOrderAsyncTask extends AsyncTask<WorkOrderModel, Void, Void> {
 
         private WorkOrdersDao mAsyncTaskDao;
@@ -43,12 +54,9 @@ public class WorkOrderRepository {
         insertWorkOrderAsyncTask(WorkOrdersDao dao) {
             mAsyncTaskDao = dao;
         }
-
         @Override
         protected Void doInBackground(final WorkOrderModel... params) {
-            mAsyncTaskDao.insertWorkOrder(params[0]);
-            mAsyncTaskDao.getAllWorkOrders();
-            mAsyncTaskDao.getSingleWorkOrder();
+            mAsyncTaskDao.insertWorkOrder( params[0] );
             return null;
         }
     }

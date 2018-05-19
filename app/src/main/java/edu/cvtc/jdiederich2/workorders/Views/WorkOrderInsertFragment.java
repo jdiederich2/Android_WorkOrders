@@ -1,4 +1,4 @@
-package edu.cvtc.jdiederich2.workorders;
+package edu.cvtc.jdiederich2.workorders.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import edu.cvtc.jdiederich2.workorders.R;
+
 
 public class WorkOrderInsertFragment extends Fragment{
 
-    private Button addWorkOrder;
 
     public WorkOrderInsertFragment() {
         // Required empty public constructor

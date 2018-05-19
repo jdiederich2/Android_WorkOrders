@@ -1,14 +1,16 @@
-package edu.cvtc.jdiederich2.workorders;
+package edu.cvtc.jdiederich2.workorders.Views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import edu.cvtc.jdiederich2.workorders.Models.LoginActivityViewModel;
+import edu.cvtc.jdiederich2.workorders.R;
 
 import static java.lang.String.valueOf;
 
@@ -28,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loginscreen);
+        setContentView( R.layout.activity_loginscreen);
 
         userName = (EditText) findViewById(R.id.editText_UserName);
         password = (EditText) findViewById(R.id.editText_Password);

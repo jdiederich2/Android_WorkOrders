@@ -1,4 +1,4 @@
-package edu.cvtc.jdiederich2.workorders;
+package edu.cvtc.jdiederich2.workorders.Models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

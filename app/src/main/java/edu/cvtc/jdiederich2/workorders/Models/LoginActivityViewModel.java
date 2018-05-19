@@ -1,17 +1,20 @@
-package edu.cvtc.jdiederich2.workorders;
+package edu.cvtc.jdiederich2.workorders.Models;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import java.util.List;
 
+import edu.cvtc.jdiederich2.workorders.Data.WorkOrderRepository;
+import edu.cvtc.jdiederich2.workorders.Controllers.LoginDao;
+import edu.cvtc.jdiederich2.workorders.Models.User;
+
 import static java.lang.String.valueOf;
 
 public class LoginActivityViewModel extends AndroidViewModel implements LoginDao {
-    private UserRepository mUserRepository;
+    private WorkOrderRepository mUserRepository;
     private LiveData<List<User>> mUser;
 
 
@@ -21,7 +24,7 @@ public class LoginActivityViewModel extends AndroidViewModel implements LoginDao
     // Constructor. References the repository and gets the user from the repository.
     public LoginActivityViewModel(@NonNull Application application) {
         super(application);
-        mUserRepository = new UserRepository(application);
+        mUserRepository = new WorkOrderRepository(application);
         mUser = mUserRepository.getUser();
     }
 

@@ -1,4 +1,4 @@
-package edu.cvtc.jdiederich2.workorders;
+package edu.cvtc.jdiederich2.workorders.Models;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -9,15 +9,18 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
+import edu.cvtc.jdiederich2.workorders.Data.WorkOrderRepository;
+import edu.cvtc.jdiederich2.workorders.Models.User;
+
 public class UserRegisterViewModel extends AndroidViewModel {
 
-    private UserRepository mUserRepository;
+    private WorkOrderRepository mUserRepository;
     private LiveData<List<User>> mUser;
 
     // Constructor. References teh repository and gets the user from the repository.
     public UserRegisterViewModel(@NonNull Application application) {
         super(application);
-        mUserRepository = new UserRepository( application );
+        mUserRepository = new WorkOrderRepository( application );
         mUser = mUserRepository.getUser();
     }
 
